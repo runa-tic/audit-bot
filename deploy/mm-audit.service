@@ -1,0 +1,24 @@
+[Unit]
+Description=mm-audit: market-audit bot, collector and card API
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=mmaudit
+Group=mmaudit
+WorkingDirectory=/opt/mm-audit
+EnvironmentFile=/etc/mm-audit/env
+Environment=AUDIT_DATA=/var/lib/mm-audit HOME=/var/lib/mm-audit PYTHONUNBUFFERED=1 PLAYWRIGHT_BROWSERS_PATH=/opt/mm-audit/.browsers
+ExecStart=/opt/mm-audit/.venv/bin/python -m auditbot.service
+Restart=on-failure
+RestartSec=10
+MemoryMax=900M
+CPUWeight=50
+Nice=5
+NoNewPrivileges=yes
+ProtectSystem=strict
+ReadWritePaths=/var/lib/mm-audit
+PrivateTmp=yes
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,5 @@
+Hey! We ran a 3-day market-quality check on {project} ({symbol}) across {venues}: hourly snapshots of ±2% order-book depth, top-of-book spread and 24h volume.
+
+{findings}
+
+Cards attached. Is liquidity on these venues something you're looking at right now?

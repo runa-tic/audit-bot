@@ -1,0 +1,7 @@
+.venv/
+var/
+data/
+__pycache__/
+*.pyc
+.env
+demo-card.png

@@ -1,0 +1,19 @@
+{
+  "name": "Example Markets",
+  "logo": "logo.svg",
+  "title": "Liquidity Report",
+  "tagline": "Order-book quality, measured every 15 minutes",
+  "colors": {
+    "background": "#f7f7f4",
+    "surface": "#ffffff",
+    "text": "#16181d",
+    "accent": "#5b4fe0",
+    "accent_deep": "#2d2580",
+    "positive": "#138a52",
+    "positive_text": "#0f7a47",
+    "negative": "#d6453b",
+    "negative_text": "#c23a31",
+    "warning": "#b7791f",
+    "neutral": "#6b6f78"
+  }
+}

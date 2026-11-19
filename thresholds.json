@@ -1,0 +1,74 @@
+{
+  "_note": [
+    "Per-venue requirements a card is judged against (2026-11-03). Each check: id, kind, and min or max.",
+    "kinds: depth (band = % from mid; side each | combined), spread (top of book, % of mid), volume (24 h quote),",
+    "levels (book levels per side; band = within % of mid, omitted = the whole returned book; agg avg | min),",
+    "drop (largest peak-to-trough fall inside any window_h, % of the peak), price_diff (mid vs the median of the",
+    "coin's other collected venues, %). A rep can change min/max or switch a check off for one audit (bot.py).",
+    "Rules public data cannot test (self-trading, taker-only volume, trade frequency, multichain value, listing",
+    "terms) are left off on purpose. Binance and OKX have no published rules here: 5x and 3x the average of the",
+    "venues that state one, rounded (2026-11-03): Binance 17,000 / 0.2% / 140,000, OKX 10,000 / 0.35% / 85,000.",
+    "Averages: (per-side +-2% depth 3,425; spread 1.078%, divided, since lower is stricter; 24 h volume",
+    "28,333 from BingX 30k, Bybit 50k, MEXC 5k). HTX publishes none either: 1x those averages, rounded",
+    "(2026-11-09; it had kept the 2026-10 demo placeholders 50,000 / 0.2% / 250,000): 3,500 / 1% / 28,333.",
+    "KuCoin, Bitget, Gate and Kraken publish no volume rule; they get that 28,333 average as a house 24 h volume minimum (2026-11-03).",
+    "Bybit (taker volume, aim 50k) and MEXC (non-self-trading volume, 5k) are checked against total 24 h volume: a fail is a real fail, a pass is an upper estimate (2026-11-03).",
+    "Every venue carries the same three checks, so every card shows the same four tiles (depth2, spread, vol, then",
+    "Liquidity Trend), 2026-11-10. Dropped for that: Bitget's +-10% depth, order levels, 24 h / 3-day price",
+    "drop and price vs other exchanges, BingX's order levels, Kraken's +-0.25% and +-1% depth. Kraken publishes no",
+    "spread rule: 1x the average, rounded, 1% (as HTX). The other kinds still work if a venue is given one."
+  ],
+  "trend_band_pct": 1,
+  "venues": {
+    "kucoin": [
+      {"id": "depth2", "kind": "depth", "band": 2, "side": "each", "min": 1000},
+      {"id": "spread", "kind": "spread", "max": 0.2},
+      {"id": "vol", "kind": "volume", "min": 28333}
+    ],
+    "bybit": [
+      {"id": "depth2", "kind": "depth", "band": 2, "side": "each", "min": 4000},
+      {"id": "spread", "kind": "spread", "max": 1},
+      {"id": "vol", "kind": "volume", "min": 50000}
+    ],
+    "bingx": [
+      {"id": "depth2", "kind": "depth", "band": 2, "side": "each", "min": 2000},
+      {"id": "spread", "kind": "spread", "max": 2},
+      {"id": "vol", "kind": "volume", "min": 30000}
+    ],
+    "mexc": [
+      {"id": "depth2", "kind": "depth", "band": 2, "side": "combined", "min": 1500},
+      {"id": "spread", "kind": "spread", "max": 2},
+      {"id": "vol", "kind": "volume", "min": 5000}
+    ],
+    "bitget": [
+      {"id": "depth2", "kind": "depth", "band": 2, "side": "each", "min": 5000},
+      {"id": "spread", "kind": "spread", "max": 0.5},
+      {"id": "vol", "kind": "volume", "min": 28333}
+    ],
+    "gate": [
+      {"id": "depth2", "kind": "depth", "band": 2, "side": "each", "min": 500},
+      {"id": "spread", "kind": "spread", "max": 1},
+      {"id": "vol", "kind": "volume", "min": 28333}
+    ],
+    "kraken": [
+      {"id": "depth2", "kind": "depth", "band": 2, "side": "each", "min": 5000},
+      {"id": "spread", "kind": "spread", "max": 1},
+      {"id": "vol", "kind": "volume", "min": 28333}
+    ],
+    "binance": [
+      {"id": "depth2", "kind": "depth", "band": 2, "side": "each", "min": 17000},
+      {"id": "spread", "kind": "spread", "max": 0.2},
+      {"id": "vol", "kind": "volume", "min": 140000}
+    ],
+    "okx": [
+      {"id": "depth2", "kind": "depth", "band": 2, "side": "each", "min": 10000},
+      {"id": "spread", "kind": "spread", "max": 0.35},
+      {"id": "vol", "kind": "volume", "min": 85000}
+    ],
+    "htx": [
+      {"id": "depth2", "kind": "depth", "band": 2, "side": "each", "min": 3500},
+      {"id": "spread", "kind": "spread", "max": 1},
+      {"id": "vol", "kind": "volume", "min": 28333}
+    ]
+  }
+}
